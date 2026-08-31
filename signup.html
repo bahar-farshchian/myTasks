@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="flex flex-col items-center justify-center min-h-screen bg-[#816B5C] bg-center bg-no-repeat">
+
+        <!-- <div><img src="img/Bear.png" alt="bear" class="fixed bottom-0 right-0 w-[500px] h-[500px]"></div> -->
+        <div class="bear-container">
+           <img src="img/Bear1.png" alt="bear"
+           class="w-full h-full">
+
+           <div class="eye left-eye">
+             <div class="pupil"></div>
+           </div>
+
+           <div class="eye right-eye">
+             <div class="pupil"></div>
+           </div>
+        </div>
+
+        <div class="bg-[#CDBDAC] border-8 border-[#F9EEDA] w-[420px]">
+           <form id="signupForm" class="p-6 pt-0 h-96 flex flex-col items-center justify-center">
+               <h2 class="text-3xl font-bold text-[#816B5C] mb-8 text-center">Sign Up</h2>
+               <input class="w-full p-2 mb-3 border bg-[#F9EEDA]" type="text" id="username" placeholder="username" required>
+               <input class="w-full p-2 mb-5 border bg-[#F9EEDA]" type="password" id="password" placeholder="password" required>
+               <button class="w-full bg-[#816B5C] text-white p-2 rounded-2xl" type="submit">Sign Up</button>
+               <p class="text-center text-sm mt-3">Do you have an account?  <a class="text-yellow-900 font-bold" href="login.html">Log In</a></p>
+           </form>
+        </div>
+    </main>
+  <script>
+
+let loopCount = 0;
+const maxLoops = 6;
+
+const animation = lottie.loadAnimation({
+  container: document.getElementById('lottie-animation'),
+  renderer: 'svg',
+  loop: false,
+  autoplay: true,
+  path: 'Animation - 1747299237547.json'
+});
+
+animation.addEventListener('complete', function () {
+  loopCount++;
+  if (loopCount < maxLoops) {
+    setTimeout(() => animation.goToAndPlay(0, true), 1500); // 1000ms یعنی یک ثانیه تأخیر بین loopها
+  }
+});
+
+    document.getElementById("signupForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const users = JSON.parse(localStorage.getItem("users")) || {};
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (users[username]) {
+        alert("این نام کاربری قبلاً ثبت شده است.");
+        return;
+      }
+
+      users[username] = { password, tasks: [] };
+      localStorage.setItem("users", JSON.stringify(users));
+      alert("ثبت‌ نام با موفقیت انجام شد!");
+      window.location.href = "login.html";
+    });
+
+     const eyes = document.querySelectorAll(".eye");
+
+    const passwordInput = document.getElementById("password");
+
+passwordInput.addEventListener("focus", () => {
+  eyes.forEach(eye => {
+    eye.classList.add("closed");
+  });
+});
+
+passwordInput.addEventListener("blur", () => {
+  eyes.forEach(eye => {
+    eye.classList.remove("closed");
+  });
+});
+
+document.addEventListener("mousemove", (e) => {
+
+  eyes.forEach((eye) => {
+
+  if (eye.classList.contains("closed")) return;
+
+  const pupil = eye.querySelector(".pupil");
+
+    const rect = eye.getBoundingClientRect();
+
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const dx = e.clientX - centerX;
+    const dy = e.clientY - centerY;
+
+    const angle = Math.atan2(dy, dx);
+
+    const move = 6;
+
+    const x = Math.cos(angle) * move;
+    const y = Math.sin(angle) * move;
+
+    pupil.style.transform =
+      `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+  });
+  });
+  </script>
+</body>
+</html>
