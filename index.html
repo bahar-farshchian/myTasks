@@ -18,57 +18,296 @@
     } */
   </style>
 </head>
-<body class="bg-[url(img/unnamed.png)] bg-contain bg-repeat overflow-hidden">
+<body class="bg-[url(img/unnamed.png)] bg-contain bg-repeat overflow-x-hidden">
 
-    <header class="bg-taupe-600 h-[80px] flex justify-end items-center p-4">
-       <div>
-          <input type="text" id="searchInput" placeholder="🔍 Search tasks..."
-           class="w-full rounded-lg bg-neutral-300 border-3 border-neutral-500 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-600">
-       </div>
-    </header>
+  <!-- Header -->
+  <header class="bg-taupe-600 h-[80px] flex justify-end items-center p-4">
+    <div>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search tasks..."
+        class="w-full rounded-lg bg-neutral-300 border-3 border-neutral-500 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-cyan-600"
+      >
+    </div>
+  </header>
 
-    <main class="grid grid-cols-1 lg:grid-cols-8 min-h-screen w-full -translate-x-12 lg:translate-x-12 justify-items-center scale-140 translate-y-100 lg:scale-100 lg:translate-y-0">  
-        <section class="order-2 lg:order-1 col-span-3 lg:col-start-5 lg:mt-6 h-5">
-           <div class="relative w-[900px] h-[650px] translate-x-22 -translate-y-180 lg:translate-y-0">
-              <div id="d" class="absolute w-[900px] h-[660px] bg-no-repeat bg-contain bg-center bg-[url(img/1000099302.png)]"></div>
-              <form id="taskForm" class="p-4 relative z-10 w-[38%] max-w-[440px] pt-42 ml-63 rotate-359 flex flex-col justify-center items-center">
-                  <h1 class="text-3xl text-neutral-600 font-bold text-center mb-8 mr-1">managing task</h1>
-                  <input class="w-[250px] p-2 mb-4 border-2 border-[#533824] bg-[#ffffff] hover:bg-neutral-300 placeholder:font-serif" type="text" id="title" placeholder="Title" required>
-                  <!-- <input class="w-[250px] p-2 mb-4 border-2 border-[#533824] bg-[#ffffff] hover:bg-neutral-300 placeholder:font-serif" type="text" id="day" placeholder="Priority" required> -->
-                  <select id="day" class="w-[250px] p-2 mb-4 border-2 border-[#533824] bg-[#ffffff] hover:bg-neutral-300 placeholder:font-serif" placeholder="Priority" required>
-                     <option value="">Select Priority</option>
-                     <option value="High">🔴 High</option>
-                     <option value="Medium">🟡 Medium</option>
-                     <option value="Low">🟢 Low</option>
-                  </select>
-                  <input class="w-[250px] p-2 mb-4 border-2 border-[#533824] bg-[#ffffff] hover:bg-neutral-300 placeholder:font-serif" type="text" id="time" placeholder="Time" required>
-                  <div class="flex flex-row w-[250px] pl-2 p-1 mb-4 border-2 border-[#533824] bg-[#ffffff] hover:bg-neutral-300 placeholder:font-serif">
-                     <input class="bg-transparent w-full outline-0" type="text" id="data" placeholder="Date" autocomplete="off" autocorrect="off" spellcheck="false" required readonly>
-                        <img src="img/weekend.png" class="w-9 h-9" alt="calendar">
-                  </div>
-                  <input type="hidden" id="editIndex">
-                  <button class="w-[64px] h-[36px] bg-neutral-600 text-white px-4 py-2 rounded-2xl ml-40 mb-10 flex justify-center items-center pt-1.5" type="submit">save</button>
-              </form>
-            </div>
-        </section>
 
-        <section class="order-1 lg:order-none flex flex-col items-start lg:h-dvh bottom-[60px] col-span-4 lg:col-start-1 lg:ml-15">
-            <div>
-                <img class="h-[140px] w-[660px] translate-x-8 lg:-translate-x-3 mb-14 mt-14 lg:ml-8" src="img/last.png" alt="image description">
-            </div>
-            <div id="tasksList" class="mt-11 space-y-3 w-[80%] h-[300px] max-w-xl translate-x-1 lg:translate-x-7"></div>
-            <div id="paginationButtons" class="flex justify-between w-1/3 z-10 bg-yellow-950/10 ml-60 lg:ml-50 rounded-full mt-4 translate-x-4">
-                <button id="prevBtn" onclick="prevPage()" class="px-2 py-1">
-                   <svg class="text-yellow-950/80" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="14" height="30" fill="currentColor" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 298 511.93"><path fill-rule="nonzero" d="M285.77 441c16.24 16.17 16.32 42.46.15 58.7-16.16 16.24-42.45 16.32-58.69.16l-215-214.47c-16.24-16.16-16.32-42.45-.15-58.69L227.23 12.08c16.24-16.17 42.53-16.09 58.69.15 16.17 16.24 16.09 42.54-.15 58.7l-185.5 185.04L285.77 441z"/></svg>
-                </button>
-                <p class="text-xl mt-1.5 font-bold text-yellow-950/80" id="showPage"></p>
-                <button id="nextBtn" onclick="nextPage()" class="px-2 py-1">
-                   <svg class="text-yellow-950/80" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="14" height="30" fill="currentColor" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 298 511.93"><path fill-rule="nonzero" d="M70.77 499.85c-16.24 16.17-42.53 16.09-58.69-.15-16.17-16.25-16.09-42.54.15-58.7l185.5-185.03L12.23 70.93c-16.24-16.16-16.32-42.45-.15-58.7 16.16-16.24 42.45-16.32 58.69-.15l215.15 214.61c16.17 16.25 16.09 42.54-.15 58.7l-215 214.46z"/></svg>
-                </button>
-            </div>
-        </section>
-    </main>
-    <div id="confetti-container" class="fixed top-0 left-0 w-screen h-screen pointer-events-none z-[9999] lg:ml-1 translate-x-1 translate-y-80 lg:-translate-x-100 lg:-translate-y-12"></div>
+  <!-- Main -->
+  <main
+    class="grid grid-cols-1 lg:grid-cols-8 min-h-screen w-full
+    justify-items-center overflow-x-hidden
+    lg:translate-x-12"
+  >
+
+    <!-- فرم -->
+    <section
+      class="order-2 lg:order-1
+      col-span-1 lg:col-span-3 lg:col-start-5
+      w-full
+      lg:mt-6
+      scale-130
+      lg:scale-100
+      translate-y-20
+      -translate-x-12
+      lg:-translate-x-0
+      lg:-translate-y-0"
+    >
+
+      <!-- کانتینر تصویر و فرم -->
+      <div
+        class="relative
+        w-[680px] sm:w-[1350px] lg:w-[900px]
+        h-[500px] sm:h-[860px] lg:h-[650px]
+        -translate-x-[120px] sm:-translate-x-[100px]
+        -translate-y-[100px]
+        lg:-translate-x-4 lg:translate-y-0"
+      >
+
+        <!-- تصویر اصلی -->
+        <div
+          id="d"
+          class="absolute
+          w-full h-full
+          bg-no-repeat bg-contain bg-center
+          bg-[url(img/1000099302.png)]
+          "
+        ></div>
+
+
+        <!-- Form -->
+        <form
+          id="taskForm"
+          class="p-4 relative z-10
+          w-[38%] max-w-[440px]
+          pt-[170px]
+          ml-[31%]
+          scale-130
+          lg:scale-100
+          translate-y-16
+          lg:translate-y-0
+          rotate-359
+          flex flex-col justify-center items-center
+          lg:pt-42 lg:ml-63"
+        >
+
+          <h1
+            class="text-2xl sm:text-3xl
+            text-neutral-600 font-bold
+            text-center mb-8 mr-1"
+          >
+            managing task
+          </h1>
+
+
+          <input
+            class="w-[220px] sm:w-[250px]
+            p-2 mb-4
+            border-2 border-[#533824]
+            bg-[#ffffff]
+            hover:bg-neutral-300
+            placeholder:font-serif"
+            type="text"
+            id="title"
+            placeholder="Title"
+            required
+          >
+
+
+          <select
+            id="day"
+            class="w-[220px] sm:w-[250px]
+            p-2 mb-4
+            border-2 border-[#533824]
+            bg-[#ffffff]
+            hover:bg-neutral-300
+            placeholder:font-serif"
+            required
+          >
+            <option value="">Select Priority</option>
+            <option value="High">🔴 High</option>
+            <option value="Medium">🟡 Medium</option>
+            <option value="Low">🟢 Low</option>
+          </select>
+
+
+          <input
+            class="w-[220px] sm:w-[250px]
+            p-2 mb-4
+            border-2 border-[#533824]
+            bg-[#ffffff]
+            hover:bg-neutral-300
+            placeholder:font-serif"
+            type="text"
+            id="time"
+            placeholder="Time"
+            required
+          >
+
+
+          <div
+            class="flex flex-row
+            w-[220px] sm:w-[250px]
+            pl-2 p-1 mb-4
+            border-2 border-[#533824]
+            bg-[#ffffff]
+            hover:bg-neutral-300"
+          >
+
+            <input
+              class="bg-transparent w-full outline-0"
+              type="text"
+              id="data"
+              placeholder="Date"
+              autocomplete="off"
+              autocorrect="off"
+              spellcheck="false"
+              required
+              readonly
+            >
+
+            <img
+              src="img/weekend.png"
+              class="w-8 h-8 sm:w-9 sm:h-9"
+              alt="calendar"
+            >
+
+          </div>
+
+
+          <input type="hidden" id="editIndex">
+
+
+          <button
+            class="w-[64px] h-[36px]
+            bg-neutral-600 text-white
+            px-4 py-2 rounded-2xl
+            ml-28 sm:ml-40
+            mb-10
+            flex justify-center items-center pt-1.5"
+            type="submit"
+          >
+            save
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- Task List -->
+    <section
+      class="order-1 lg:order-none
+      flex flex-col items-center lg:items-start
+      w-full
+      lg:h-dvh
+      scale-130
+      lg:scale-100
+      translate-y-32
+      lg:translate-y-0
+      col-span-1 lg:col-span-4
+      lg:col-start-1 lg:ml-15"
+    >
+
+      <!-- تصویر بالای لیست -->
+      <div class="w-full flex justify-center lg:block">
+
+        <img
+          class="h-auto
+          w-[95vw] max-w-[660px]
+          lg:h-[140px] lg:w-[660px]
+          mb-10 lg:mb-14
+          mt-10 lg:mt-14
+          lg:-translate-x-3 lg:ml-8"
+          src="img/last.png"
+          alt="image description"
+        >
+
+      </div>
+
+
+      <!-- Task List -->
+      <div
+        id="tasksList"
+        class="mt-6 lg:mt-6
+        space-y-3
+        w-[95%] max-w-xl
+        lg:translate-x-7"
+      >
+      </div>
+
+
+      <!-- Pagination -->
+      <div
+        id="paginationButtons"
+        class="flex justify-between
+        w-[45%] sm:w-1/3
+        z-10
+        bg-yellow-950/10
+        rounded-full
+        lg:ml-50 lg:translate-x-4 -translate-y-8"
+      >
+
+        <button
+          id="prevBtn"
+          onclick="prevPage()"
+          class="px-2 py-1"
+        >
+
+          <svg
+            class="text-yellow-950/80"
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="30"
+            fill="currentColor"
+            viewBox="0 0 298 511.93"
+          >
+            <path
+              fill-rule="nonzero"
+              d="M285.77 441c16.24 16.17 16.32 42.46.15 58.7-16.16 16.24-42.45 16.32-58.69.16l-215-214.47c-16.24-16.16-16.32-42.45-.15-58.69L227.23 12.08c16.24-16.17 42.53-16.09 58.69.15 16.17 16.24 16.09 42.54-.15 58.7l-185.5 185.04L285.77 441z"
+            />
+          </svg>
+
+        </button>
+
+
+        <p
+          class="text-xl mt-1.5 font-bold text-yellow-950/80"
+          id="showPage"
+        ></p>
+
+
+        <button
+          id="nextBtn"
+          onclick="nextPage()"
+          class="px-2 py-1"
+        >
+
+          <svg
+            class="text-yellow-950/80"
+            xmlns="http://www.w3.org/2000/svg"
+            width="14"
+            height="30"
+            fill="currentColor"
+            viewBox="0 0 298 511.93"
+          >
+            <path
+              fill-rule="nonzero"
+              d="M70.77 499.85c-16.24 16.17-42.53 16.09-58.69-.15-16.17-16.25-16.09-42.54.15-58.7l185.5-185.03L12.23 70.93c-16.24-16.16-16.32-42.45-.15-58.7 16.16-16.24 42.45-16.32 58.69-.15l215.15 214.61c16.17 16.25 16.09 42.54-.15 58.7l-215 214.46z"
+            />
+          </svg>
+
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+    <div id="confetti-container" class="fixed top-0 left-0 w-screen h-screen pointer-events-none z-[9999] lg:ml-1 translate-x-1 -translate-y-64 lg:-translate-x-90 lg:-translate-y-0"></div>
     <div id="loadingSpinner" class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-white/60 z-[9999] hidden">
         <div role="status">
              <svg aria-hidden="true" class="inline w-10 h-10 text-gray-200 animate-spin dark:text-gray-600 fill-yellow-900" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,8 +408,8 @@ if (!user || !users[user]) {
     }
 
     container.innerHTML += `
-      <div class="relative w-[500px] flex flex-row items-center bottom-[70px] ml-28 lg:ml-15">
-        <div class="inline-flex items-center mb-4">
+      <div class="relative w-full max-w-[500px] flex flex-row items-center bottom-[70px] mx-auto lg:mx-0 lg:ml-15">
+        <div class="inline-flex items-center">
           <label class="flex items-center cursor-pointer relative">
             <input defaultChecked type="checkbox" onchange="toggleCompleted(this, ${realIndex})" class="peer h-7 w-7 cursor-pointer transition-all appearance-none rounded-full bg-slate-100 shadow hover:shadow-md border border-slate-300 checked:bg-[#5C4033]" id="check-custom-style" />
             <span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
