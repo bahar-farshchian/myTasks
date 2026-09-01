@@ -48,7 +48,7 @@
       lg:mt-6
       scale-130
       lg:scale-100
-      translate-y-46
+      translate-y-56
       -translate-x-12
       lg:-translate-x-0
       lg:-translate-y-0"
@@ -57,11 +57,11 @@
       <!-- کانتینر تصویر و فرم -->
       <div
         class="relative
-        w-[680px] sm:w-[1350px] lg:w-[900px]
-        h-[500px] sm:h-[860px] lg:h-[650px]
+        w-[680px] sm:w-[1350px] lg:w-[1000px]
+        h-[500px] sm:h-[860px] lg:h-[750px]
         -translate-x-[120px] sm:-translate-x-[100px]
         -translate-y-[100px]
-        lg:-translate-x-4 lg:translate-y-0"
+        lg:-translate-x-24 lg:-translate-y-8"
       >
 
         <!-- تصویر اصلی -->
@@ -84,11 +84,11 @@
           ml-[31%]
           scale-130
           lg:scale-100
-          translate-y-16
-          lg:translate-y-0
+          translate-y-20
+          lg:translate-y-10
           rotate-359
           flex flex-col justify-center items-center
-          lg:pt-42 lg:ml-63"
+          lg:pt-42 lg:ml-70"
         >
 
           <h1
@@ -250,11 +250,12 @@
       <div
         id="paginationButtons"
         class="flex justify-between
-        w-[45%] sm:w-1/3
+        w-[45%] sm:w-1/5 lg:w-1/3
+        mt-4 lg:mt-0
         z-10
         bg-yellow-950/10
         rounded-full
-        lg:ml-50 lg:translate-x-4"
+        lg:ml-50 lg:translate-x-4 lg:-translate-y-8"
       >
 
         <button
@@ -418,15 +419,15 @@ if (!user || !users[user]) {
         <div class="inline-flex items-center">
           <label class="flex items-center cursor-pointer relative">
             <input defaultChecked type="checkbox" onchange="toggleCompleted(this, ${realIndex})" class="peer h-7 w-7 cursor-pointer transition-all -translate-y-1.5 appearance-none rounded-full bg-slate-100 shadow hover:shadow-md border border-slate-300 checked:bg-[#5C4033]" id="check-custom-style" />
-            <span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
+            <span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 -translate-y-1.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1">
                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
               </svg>
             </span>
           </label>
         </div>
 
-        <div id="task-box-${realIndex}" class="bg-[#FEFFF4] rounded-full px-6 py-2 mb-4 ml-3 w-full h-[40px] shadow-md text-sm text-gray-800 flex flex-row justify-between items-center">
+        <div id="task-box-${realIndex}" class="bg-[#FEFFF4] rounded-full px-6 py-2 mb-4 ml-3 w-full h-[48px] shadow-md text-sm text-gray-800 flex flex-row justify-between items-center">
           <div>
           <p id="task-text-${realIndex}">
            <strong>${task.title}</strong>
