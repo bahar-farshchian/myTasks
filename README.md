@@ -10,10 +10,11 @@ The project focuses on creating a clean user experience with a modern design and
 
 ## ✨ Features
 
-- ➕ Add new tasks
-- 📝 Manage daily tasks
-- 🗂️ Organize tasks
-- 📱 Responsive design for different screen sizes
+- ➕ Add and manage tasks
+- 📅 Calendar functionality
+- 🔐 Login page
+- 📝 Sign up page
+- 📱 Responsive design
 - 🎨 Modern and clean user interface
 - ⚡ Interactive functionality using JavaScript
 
@@ -88,19 +89,8 @@ git clone https://github.com/bahar-farshchian/myTasks.git
 
 ## 📸 Preview
 
-You can add a screenshot of the project here.
-
-Example:
-
-```text
-assets/
-└── preview.png
-```
-
-Then you can display it in the README using:
-
 ```html
-<img src="assets/preview.png" alt="Tasks Flow Preview">
+<img src="img/preview.png" alt="Tasks Flow Preview">
 ```
 
 ## 📄 License
