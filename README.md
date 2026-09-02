@@ -69,7 +69,7 @@ To run this project locally:
 1. Clone the repository:
 
 ```bash
-git clone YOUR-REPOSITORY-LINK
+git clone https://github.com/bahar-farshchian/myTasks.git
 ```
 
 2. Open the project folder.
