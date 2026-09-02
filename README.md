@@ -89,7 +89,7 @@ git clone https://github.com/bahar-farshchian/myTasks.git
 
 ## 📸 Preview
 
-```html
+```
 <img src="img/preview.png" alt="Tasks Flow Preview">
 ```
 
