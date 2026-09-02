@@ -79,11 +79,9 @@ git clone https://github.com/bahar-farshchian/myTasks.git
 
 ## 🔮 Future Improvements
 
-- Add task categories
 - Add task priorities
 - Add due dates
 - Add task search functionality
-- Add dark mode 🌙
 - Save tasks using Local Storage
 - Add animations and transitions
 
@@ -92,6 +90,7 @@ git clone https://github.com/bahar-farshchian/myTasks.git
 
 <img src="img/preview.png" alt="Tasks Flow Preview">
 
+https://bahar-farshchian.github.io/myTasks/
 
 ## 📄 License
 
