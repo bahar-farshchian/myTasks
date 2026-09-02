@@ -89,9 +89,9 @@ git clone https://github.com/bahar-farshchian/myTasks.git
 
 ## 📸 Preview
 
-```
+
 <img src="img/preview.png" alt="Tasks Flow Preview">
-```
+
 
 ## 📄 License
 
