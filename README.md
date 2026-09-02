@@ -36,15 +36,18 @@ The layout adapts to different screen sizes to provide a better user experience.
 ## 📂 Project Structure
 
 ```text
-Tasks-Flow/
+myTasks/
 │
-├── index.html
-├── script.js
-├── README.md
+├── img/                         # Images and project assets
 │
-└── assets/
-    ├── images/
-    └── icons/
+├── Animation - 1748522491321.json
+├── index.html                   # Main application page
+├── login.html                   # Login page
+├── signup.html                  # Sign up page
+├── style.css                    # Main stylesheet
+├── mc-calendar.min.css          # Calendar library styles
+├── mc-calendar.min.js           # Calendar functionality
+└── README.md                    # Project documentation
 ```
 
 ## 🎨 Design
